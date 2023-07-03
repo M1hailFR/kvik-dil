@@ -1,0 +1,65 @@
+.container {
+  max-width: calc(1920px - $sidebar-width);
+  margin-right: 1.5rem;
+  margin-left: 17rem;
+  transition: .3s;
+}
+
+.full {
+  margin-left: 8rem;
+  transition: .3s;
+}
+.main-layout {
+  position: relative;
+  min-height: 100vh;
+}
+.empty-layout {
+  align-items: center;
+  justify-content: center;
+  height: 100vh
+}
+
+.grid {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.page {
+  padding: 2.5rem 0 2rem;
+}
+
+.page__title {
+  font-size: $h2-font-size;
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
+.main {
+  overflow: hidden;
+}
+
+.shape {
+  background-color: hsla(219, 33%, 32%, .5);
+  border-radius: 50%;
+  filter: blur(112px);
+}
+
+.shape__big {
+  width: 400px;
+  height: 400px;
+}
+
+.shape__small {
+  width: 300px;
+  height: 300px;
+}
+
+.shape__smaller {
+  width: 180px;
+  height: 180px;
+  filter: blur(64px);
+}
+
+.invalid {
+  color: $first-color;
+}

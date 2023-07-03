@@ -1,0 +1,225 @@
+.auth {
+  position: relative;
+
+  &__form {
+    width: 400px;
+    position: relative;
+    background-color: $container-color;
+    padding: 4.5rem 3.5rem;
+    border-radius: 1rem;
+    margin-inline: 2.5rem;
+    overflow: hidden;
+  }
+
+  &__title {
+    font-size: $h1-font-size;
+    font-weight: $font-semi-bold;
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+
+  &__content,
+  &__box,
+  &__check {
+    position: relative;
+    display: grid;
+  }
+
+  &__content {
+    row-gap: 1.75rem;
+    margin-bottom: 1.5rem;
+  }
+
+  &__box {
+    grid-template-columns: max-content 1fr;
+    align-items: center;
+    column-gap: .75rem;
+    border-bottom: 2px solid $first-color;
+
+    &:nth-child(2) input {
+      padding-right: 2rem;
+    }
+  }
+
+  &__icon,
+  &__icon-eye,
+  &__icon-login {
+    font-size: 1.25rem;
+  }
+
+  &__box-input {
+    position: relative;
+  }
+
+  &__input {
+    width: 100%;
+    outline: none;
+    padding-block: .9rem;
+    border: none;
+    background: none;
+    color: $white-color;
+    position: relative;
+    cursor: pointer;
+    z-index: 1;
+  }
+
+  &__label {
+    position: absolute;
+    left: 0;
+    top: 13px;
+    font-weight: $font-medium;
+    transition: top .3s, font-size .3s;
+  }
+
+  &__icon-eye {
+    position: absolute;
+    right: 0;
+    top: 10px;
+    z-index: 10;
+    cursor: pointer;
+  }
+
+  &__check,
+  &__check-group {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  &__check {
+    margin-bottom: 1.5rem;
+  }
+  &__check,
+  &__check-group,
+  &__register {
+    font-size: $small-font-size;
+  }
+
+  &__check-group{
+    column-gap: .5rem;
+  }
+
+  &__check-input  {
+    width: 16px;
+    height: 16px;
+    background: none;
+    border: none;
+  }
+
+  &__forgot,
+  &__register-link {
+    position: relative;
+    color: $text-color;
+    transition: .3s;
+    &:hover{
+      color: $first-color-alt;
+      text-decoration: underline;
+    }
+  }
+
+  &__button {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: .5rem;
+    padding: .75rem;
+    border-radius: .5rem;
+    border: 2px solid $first-color-alt;
+    color: $white-color;
+    margin-bottom: 2rem;
+    background: none;
+    font-family: "Exo";
+    font-size: 1.3rem;
+    font-weight: $font-bold; 
+    cursor: pointer;
+    transition: .3s;
+    &:hover {
+      background-color: $first-color-alt;
+      color: $black-color;
+    }
+  }
+
+  &__register{
+    text-align: center;
+    font-weight: $font-medium;
+  }
+
+  &__input:focus + &__label {
+    top: -12px;
+    font-size: $small-font-size;
+  }
+
+  &__input:not(:placeholder-shown).auth__input:not(:focus) + &__label {
+    top: -12px;
+    font-size: $small-font-size;
+  }
+
+
+}
+
+// auth bg
+.auth .shape__big,
+.auth__form .shape__small {
+  position: absolute;
+}
+
+.auth__form .shape__small {
+  right: -8rem;
+  bottom: -8rem;
+}
+
+.auth .shape__big {
+  left: -1rem;
+  top: -2rem;
+}
+
+// select
+.auth__select{
+  position: relative;
+  display: block;
+  padding-block: .9rem;
+  cursor: pointer;
+  width: 100%;
+  i{
+    position: absolute;
+    top: 14px;
+    right: 0;
+    transition: .3s;
+  }
+}
+.auth__select-title{
+  display: block;
+  transition: .3s;
+}
+.auth__select-options {
+  width: 100%;
+  display: block;
+  background: rgba(43, 45, 48, 0.4);
+  backdrop-filter: blur(7px);
+  position: absolute;
+  max-height: 330px;
+  width: 114%;
+  z-index: 20;
+  border-radius: 1rem;
+  padding: 1.3rem 2rem;
+  left: -34px;
+  top: 3.5rem;
+  overflow-y: scroll;
+  p {
+    padding: 0.7rem;
+    border-radius: .5rem;
+    transition: .3s;
+  }
+  p:hover{
+    background-color: hsla(225, 4%, 20%, 0.4);
+    backdrop-filter: blur(7px);
+    color: $first-color;
+    transform: translateX(0.5rem);
+  }
+}
+.auth__iconDown {
+  transform: rotate(90deg);
+}
+.auth__select-title:hover .auth__icon {
+  transform: rotate(90deg);
+}
