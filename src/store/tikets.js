@@ -1,4 +1,4 @@
-import { getDatabase, ref, push, onValue, set, update } from 'firebase/database'
+import { getDatabase, ref, push, onValue, set, update, remove } from 'firebase/database'
 export default {
   state: {
     TIKETS: {},
@@ -56,9 +56,17 @@ export default {
         title: toUpdate.newTitleTiket,
         description: toUpdate.newDescTiket
       }
-      console.log(updateData)
       update(ref(db, `tikets/${toUpdate.tiketId}/`), updateData).then(() => {
         commit('SET_TIKETS', updateData)
+        dispatch('GET_TIKETS')
+      }).catch((e) => {
+        commit('SET_ERROR', e)
+        throw e
+      })
+    },
+    async DELETE_TIKET ({ commit, dispatch }, id) {
+      const db = getDatabase()
+      remove(ref(db, `tikets/${id}`)).then(() => {
         dispatch('GET_TIKETS')
       }).catch((e) => {
         commit('SET_ERROR', e)

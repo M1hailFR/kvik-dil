@@ -74,7 +74,7 @@ export default {
     const state = reactive({
       newTitleTiket: '',
       newDescTiket: '',
-      selected: 'shoose tiket',
+      selected: 'choose tiket',
       tiketId: ''
     })
     const rules = {
@@ -86,7 +86,7 @@ export default {
     return { state, v$, arrTikets }
   },
   data: () => ({
-    visible: false
+    visible: true
   }),
   methods: {
     selectParameter (t) {
@@ -95,7 +95,7 @@ export default {
       this.state.tiketId = t.id
     },
     async updateTiket (t) {
-      if (this.v$.$invalid && t.length) {
+      if (this.v$.$invalid) {
         this.v$.$touch()
         return
       }
@@ -149,7 +149,7 @@ export default {
   background: rgba(43, 45, 48, 0.4);
   backdrop-filter: blur(7px);
   position: absolute;
-  max-height: 530px;
+  height: 350px;
   z-index: 20;
   border-radius: 1rem;
   padding: 1.3rem 2rem;

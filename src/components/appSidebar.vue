@@ -33,7 +33,7 @@
         <span class="text">Create tiket</span>
       </router-link>
       <router-link to="/UpdateTikets" class="button">
-        <i class="ri-add-line"></i>
+        <i class="ri-loop-left-line"></i>
         <span class="text">Update tiket</span>
       </router-link>
     </div>

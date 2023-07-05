@@ -13,16 +13,21 @@
         <div class="col col-1" data-label="Tiket Id">{{ idx }}</div>
         <div class="col col-2" data-label="Tiket title">{{ t.title }}</div>
         <div class="col col-3" data-label="Tiket description">{{ t.description }}</div>
+        <button class="col col-4 table__btn table__btn-red" data-label="delete"  @click="deletTiket(t.id)">
+          <i class="ri-delete-bin-line">{{  }}</i>
+        </button>
         <button class="col col-4 table__btn" data-label="Open">
           <i class="ri-arrow-right-fill"></i>
         </button>
       </li>
     </ul>
   </div>
-  <div class="table__pagination">
-    <div class="table__page-number" v-for="p in pages" :key="p" :class="{ 'table__page-selected': p === state.pageNumber }"
-      @click="nextPage(p)">
-      {{ p }}
+  <div class="pagination-container">
+    <div class="table__pagination">
+      <div class="table__page-number" v-for="p in pages" :key="p" :class="{ 'table__page-selected': p === state.pageNumber }"
+        @click="nextPage(p)">
+        {{ p }}
+      </div>
     </div>
   </div>
 </template>
@@ -39,7 +44,8 @@ export default {
     const paginatedTikets = computed(() => {
       const from = (state.pageNumber - 1) * state.perPage
       const to = from + state.perPage
-      return props.tiketsArr.slice(from, to)
+      const arr = props.tiketsArr
+      return arr.reverse().slice(from, to)
     })
     function nextPage (page) {
       state.pageNumber = page
@@ -49,6 +55,12 @@ export default {
   props: {
     tiketsArr: {
       type: Array
+    }
+  },
+  methods: {
+    deletTiket (value) {
+      console.log(value)
+      this.$store.dispatch('DELETE_TIKET', value)
     }
   }
 }
@@ -105,6 +117,9 @@ export default {
         scale: (1.1);
         transform: translateX(.5rem);
       }
+      &:hover .table__btn-red {
+        color: red;
+      }
     }
     .col-1 {
       min-width: 30px;
@@ -144,8 +159,8 @@ export default {
   &__pagination {
     margin: 0 auto;
     position: absolute;
-    bottom: 10px;
-    left: 24.1%;
+    bottom: 60px;
+    left: 36rem;
     display: flex;
     gap: 1rem;
   }
