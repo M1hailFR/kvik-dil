@@ -8,6 +8,13 @@
                 {{ state.selected }}
                 <i class="ri-arrow-right-double-line tiket-select-icon" :class="{select__iconDown: visible}"></i>
               </p>
+              <label for="" class="appForm__label tiket-select-title">shoose tiket
+                <small
+                  class="appForm__helper-text invalid"
+                  v-if="v$.selected.$dirty && v$.selected.$invalid"
+                > should not be empty
+                </small>
+              </label>
               <div class="tiket-select-options" v-if="visible">
                 <p class="" v-for="t in arrTikets" :key="t.id" @click="selectParameter(t)">
                   {{ t.title }}
@@ -74,12 +81,13 @@ export default {
     const state = reactive({
       newTitleTiket: '',
       newDescTiket: '',
-      selected: 'choose tiket',
+      selected: '',
       tiketId: ''
     })
     const rules = {
       newDescTiket: { required },
-      newTitleTiket: { required }
+      newTitleTiket: { required },
+      selected: { required }
     }
     const v$ = useVuelidate(rules, state)
     const arrTikets = computed(() => store.getters.TIKETS)
@@ -110,7 +118,7 @@ export default {
         await this.$store.dispatch('UPDATE_TIKET', formData)
         await this.$store.dispatch('GET_TIKET_BY_ID', this.state.selected.id)
       } catch (e) { }
-      this.state.selected = 'shoose tiket'
+      this.state.selected = ''
       this.state.tiketId = ''
       this.state.newTitleTiket = ''
       this.state.newDescTiket = ''

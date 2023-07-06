@@ -10,7 +10,7 @@
       </li>
 
       <li class="table__row" v-for="(t, idx) of paginatedTikets" :key="t.id">
-        <div class="col col-1" data-label="Tiket Id">{{ idx }}</div>
+        <div class="col col-1" data-label="Tiket Id">{{ idx + 1 }}</div>
         <div class="col col-2" data-label="Tiket title">{{ t.title }}</div>
         <div class="col col-3" data-label="Tiket description">{{ t.description }}</div>
         <button class="col col-4 table__btn table__btn-red" data-label="delete"  @click="deletTiket(t.id)">
@@ -45,7 +45,7 @@ export default {
       const from = (state.pageNumber - 1) * state.perPage
       const to = from + state.perPage
       const arr = props.tiketsArr
-      return arr.reverse().slice(from, to)
+      return arr.slice(from, to)
     })
     function nextPage (page) {
       state.pageNumber = page
