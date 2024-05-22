@@ -2,15 +2,15 @@
   <section class="home section" id="home">
     <div class="home__container grid">
       <div class="home__data">
-        <h1 class="home__title">
+        <!-- <h1 class="home__title">
           Vue app
-        </h1>
+        </h1> -->
         <h3 class="home__prem">
-          <i class="ri-fire-fill"></i> мини-личный кабинет
+          <i class="ri-fire-fill"></i> личный кабинет
         </h3>
       </div>
 
-      <h1 class="home__card-title"> My setup </h1>
+      <!-- <h1 class="home__card-title"> My setup </h1>
       <div class="home__card">
         <div class="home__card-data">
           <div class="home__card-icon">
@@ -57,7 +57,7 @@
           <p>vuelidate</p>
         </div>
 
-      </div>
+      </div> -->
     </div>
   </section>
   <router-link to="/CreateTikets" class="home__button">
